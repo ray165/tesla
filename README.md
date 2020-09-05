@@ -15,9 +15,21 @@ Using tf-idf, we find the most important words for each month. The result essent
 Lastly, the comparison between sentiment and stock prices shows that users are not following Tesla hype proportionally to share prices rocketing. 
 
 ## Intial Data Preprocessing 
+* Used PowerQuery for some quick fixes to white space for each comment
+* Used R to filter stop words, created new date/time columns, removed html tags and all non ASCII words 
+Example: 
 
-
-
+```R
+rt = rt %>% 
+  mutate( date =  (as.POSIXct(rt$created_utc, origin="1970-01-01"))) %>% 
+  mutate( year = format(date, "%Y"),
+          month = format(date, "%m"),
+          month_name = format(date, "%B"),
+          day  = format(date, "%d"),
+          date_ = format(date, "%Y-%m-%d"))
+ ```         
+          
+          
 ![Unigram Words](https://github.com/ray165/tesla/blob/master/tesla_unigram.png)
 
 ![Bigram Words](https://github.com/ray165/tesla/blob/master/tesla_bigram.png)
