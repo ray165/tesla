@@ -198,35 +198,3 @@ grid.arrange(plot_prices, plot_senti, nrow = 2)
 
 # Citation ------------
 # This dataset was published in Saif M. Mohammad and Peter Turney. (2013), ``Crowdsourcing a Word-Emotion Association Lexicon.'' Computational Intelligence, 29(3): 436-465.
-
-
-
-# Notes ----------------------
-
-# g_month %>%
-#   group_by(month_name) %>%
-#   top_n(5, n) %>%
-#   ungroup() %>%
-#   mutate(word = reorder(word, n)) %>%
-#   ggplot(aes(reorder(word,n), n), fill = month_name) +
-#   geom_col(show.legend =  FALSE) +
-#   labs(x = NULL, y = "word count") +
-#   facet_wrap(~month_name, ncol = 3, scales = "free") +
-#   coord_flip()
-
-
-
-# g_month %>%
-#   arrange(month_name, desc(n)) %>%
-#   mutate(word = factor(word, levels = rev(unique(word)))) %>% 
-#   group_by(month_name) %>%
-#   top_n(10, n) %>%
-# 
-#   
-#   ungroup() %>%
-#   ggplot(aes(x =word, y = n)) +
-#   geom_col(show.legend = FALSE) +
-#   labs(x = NULL, y = "Word Count") +
-#   facet_wrap(~month_name, ncol = 4, scales = "free") +
-#   coord_flip()
-  
