@@ -32,12 +32,15 @@ rt = rt %>%
 The tidytext package has a neat function called `unnest_tokens()` which quickly strips blocks of text into single words or multi-worded phrases AKA n-gram. 
 
 Unigrams show the most commonly used words. 'Dont' seems to be the most interesting word amongst the list. 
+
 ![Unigram Words](https://github.com/ray165/tesla/blob/master/tesla_unigram.png)
 
 Comparing the unigrams to the bigrams, I created a list of the top 15 bigrams. The results are more informative than the unigrams for what the users are talking about. 
+
 ![Bigram Words](https://github.com/ray165/tesla/blob/master/tesla_bigram.png)
 
 Since 'dont' seems to be so popular, a list of the top 15 `dont+(word)` pairs is created. 'Dont understand' is the most common phrase in this list. Users seem to be recommending others to not buy or invest in Tesla either. From this, I expect the train of thought is: users don't understand why Tesla prices keep soaring while its fundamentals don't reflect the market cap therefore they recommend others to not invest in the company.
+
 ![Dont Phrases](https://github.com/ray165/tesla/blob/master/tesla_dont_words.png?raw=true)
 
 ## Term Frequency and Topics Across The Months
