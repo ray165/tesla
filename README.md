@@ -17,7 +17,7 @@ Lastly, the comparison between sentiment and stock prices shows that users are n
 ## Intial Data Preprocessing 
 * Used PowerQuery for some quick fixes to white space for each comment
 * Used R to filter stop words, created new date/time columns, removed html tags and all non ASCII words 
-Example: 
+* Example: 
 
 ```R
 rt = rt %>% 
@@ -28,16 +28,26 @@ rt = rt %>%
           day  = format(date, "%d"),
           date_ = format(date, "%Y-%m-%d"))
  ```         
-          
-          
+
+## Unigram and Bigram words
+The tidytext package has a neat function called `unnest_tokens()` which quickly strips blocks of text into single words or multi-worded phrases aka n-gram. 
+
+Unigrams show the most commonly used words. Dont seems to be the most interesting word amongst the list. 
 ![Unigram Words](https://github.com/ray165/tesla/blob/master/tesla_unigram.png)
 
+Comparing the unigrams to the bigrams, I created a list of top 15 bigrams. The results are more informative that the unigrams for what the users are talking about. 
 ![Bigram Words](https://github.com/ray165/tesla/blob/master/tesla_bigram.png)
 
+Since 'dont' seems to be so popular, a list of the top 15 `dont+(word)` pairs are created. 'Dont understand' is the most common phrase in this list. Users seem to be reccomending others to not buy or invest in Tesla either. From this, I expect the train of thought is: users dont understand why Tesla prices keep soaring while its fundamentals  don't reflect the market cap therefore they reccomend others to not invest in the company.
 ![Dont Phrases](https://github.com/ray165/tesla/blob/master/tesla_dont_words.png?raw=true)
+
+## Term Frequency and Topics Across The Months
+The tf-idf shows the top words in a given month that best describe the theme. February seemed to have been more of a r/WallStreetBets theme perhaps users were excited by the options they were trading. From March till May the COVID-19 theme seems to be more prevalent. For instance, May focuses on Tesla's Alameda county factory which was on the news. While March and April mention pharmaceutical companies. In more recent months, Tesla has been compared to Nikola, a competing EV company.
 
 ![Plot: tf-idf](https://github.com/ray165/tesla/blob/master/tesla_tf_idf.png)
 
+## Time Series: Sentiment Analysis vs Stock Prices 
+User sentiment towards Tesla does not seem to correlate with the large increases in stock prices. I initially thought the sentiment scores would increase as stock prices increases. This doesnt seem to be the case. Perhaps, retail investors aren't powering Tesla's stock rally. 
 ![Plot: Stock Prices vs. Sentiment](https://github.com/ray165/tesla/blob/master/tesla_prices_sentiment.png)
 
 
