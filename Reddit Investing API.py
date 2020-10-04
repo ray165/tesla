@@ -1,28 +1,25 @@
 import requests
-
-query = "Tesla"
-url = "https://api.pushshift.io/reddit/comment/search?html_decode=true&subreddit=investing&q=Tesla&size=10000"
-
-from psaw import PushshiftAPI
-
-api = PushshiftAPI()
-
 import pandas as pd
 import datetime as dt
 
+
+from psaw import PushshiftAPI
+api = PushshiftAPI()
+
+
+#### Define time frame e.g. from Jan 1, 2020 till now
 start_epoch = int(dt.datetime(2020, 1,1).timestamp())
 
 
 
 #########################################
-
+# Run the api
 gen = api.search_comments(q='Tesla|tesla|Elon|elon|Musk|musk|TSLA|tsla',
                           subreddit='investing',
                           after = start_epoch,
                           )
 
-#unspecified limit leads to output in csv
-
+#unspecified limit leads to output in csv; you can play around with this
 max_response_cache = 1
 cache = []
 
